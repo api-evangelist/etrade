@@ -3,7 +3,7 @@ url: >-
   https://raw.githubusercontent.com/api-evangelist/etrade/refs/heads/main/apis.yml
 apis:
   - aid: etrade:etrade
-    name: Etrade
+    name: Etrade API
     tags:
       - API
     humanURL: ' https://developer.etrade.com/home'
