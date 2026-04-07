@@ -5,11 +5,11 @@ apis:
   - aid: etrade:etrade
     name: Etrade API
     tags:
-      - Financial
-      - Stocks
-      - Options
-      - Futures
       - Bonds
+      - Financial
+      - Futures
+      - Options
+      - Stocks
     humanURL: ' https://developer.etrade.com/home'
     properties:
       - url: ' https://developer.etrade.com/home'
@@ -23,11 +23,11 @@ apis:
       users.
 name: Etrade
 tags:
-  - Financial
-  - Stocks
-  - Options
-  - Futures
   - Bonds
+  - Financial
+  - Futures
+  - Options
+  - Stocks
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
