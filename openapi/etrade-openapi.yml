@@ -1,0 +1,187 @@
+openapi: 3.0.3
+info:
+  title: E*TRADE API
+  description: >-
+    The E*TRADE Developer Platform exposes REST APIs for account management,
+    quote retrieval, options chains, order placement, and market data. Access
+    is granted to E*TRADE customers via OAuth 1.0a after registering as a
+    developer at https://developer.etrade.com/home.
+  version: "1.0"
+  contact:
+    name: E*TRADE Developer Platform
+    url: https://developer.etrade.com/home
+  termsOfService: https://us.etrade.com/etx/hw/v2/api
+servers:
+  - url: https://api.etrade.com/v1
+    description: Production
+  - url: https://apisb.etrade.com/v1
+    description: Sandbox
+security:
+  - oauth1: []
+tags:
+  - name: Accounts
+    description: Customer account list, balances, portfolio, and transactions
+  - name: Market
+    description: Quotes, option chains, option expirations, and product lookup
+  - name: Order
+    description: Preview, place, change, and cancel equity and option orders
+  - name: Authorization
+    description: OAuth 1.0a request token, access token, and renewal flow
+paths:
+  /accounts/list:
+    get:
+      summary: List accounts
+      description: Returns the list of E*TRADE accounts for the authenticated customer.
+      operationId: listAccounts
+      tags:
+        - Accounts
+      responses:
+        "200":
+          description: Account list
+        "401":
+          description: Authentication required or token expired
+  /accounts/{accountIdKey}/balance:
+    get:
+      summary: Get account balance
+      operationId: getAccountBalance
+      tags:
+        - Accounts
+      parameters:
+        - name: accountIdKey
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: instType
+          in: query
+          required: true
+          schema:
+            type: string
+            example: BROKERAGE
+        - name: realTimeNAV
+          in: query
+          required: false
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Balance details
+  /accounts/{accountIdKey}/portfolio:
+    get:
+      summary: View portfolio
+      operationId: viewPortfolio
+      tags:
+        - Accounts
+      parameters:
+        - name: accountIdKey
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Portfolio holdings
+  /accounts/{accountIdKey}/transactions:
+    get:
+      summary: List transactions
+      operationId: listTransactions
+      tags:
+        - Accounts
+      parameters:
+        - name: accountIdKey
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Transaction list
+  /market/quote/{symbols}:
+    get:
+      summary: Get quotes
+      description: Returns market quotes for one or more symbols (comma separated).
+      operationId: getQuotes
+      tags:
+        - Market
+      parameters:
+        - name: symbols
+          in: path
+          required: true
+          schema:
+            type: string
+            example: GOOG,AAPL
+        - name: detailFlag
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [ALL, FUNDAMENTAL, INTRADAY, OPTIONS, WEEK_52, MF_DETAIL]
+      responses:
+        "200":
+          description: Quote response
+  /market/optionchains:
+    get:
+      summary: Look up option chains
+      operationId: getOptionChains
+      tags:
+        - Market
+      parameters:
+        - name: symbol
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: expiryYear
+          in: query
+          schema:
+            type: integer
+        - name: expiryMonth
+          in: query
+          schema:
+            type: integer
+        - name: expiryDay
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Option chain response
+  /accounts/{accountIdKey}/orders/preview:
+    post:
+      summary: Preview order
+      operationId: previewOrder
+      tags:
+        - Order
+      parameters:
+        - name: accountIdKey
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Order preview
+  /accounts/{accountIdKey}/orders/place:
+    post:
+      summary: Place order
+      operationId: placeOrder
+      tags:
+        - Order
+      parameters:
+        - name: accountIdKey
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Order confirmation
+components:
+  securitySchemes:
+    oauth1:
+      type: http
+      scheme: OAuth
+      description: >-
+        E*TRADE uses OAuth 1.0a. Obtain a request token, redirect the customer
+        for authorization, exchange for an access token, then sign each request
+        with HMAC-SHA1.

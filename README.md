@@ -1,42 +1,55 @@
 # Etrade (etrade)
-E*TRADE is an online brokerage firm that provides a platform for investors to trade stocks, options, futures, and bonds. They offer a variety of tools and resources for investors to research and analyze potential investments, as well as access to real-time market data. E*TRADE also offers services such as financial planning, portfolio management, and retirement planning options. Additionally, they provide educational resources and customer support to help investors make informed decisions about their investments. Overall, E*TRADE aims to empower individuals to take control of their financial future and achieve their investment goals.
+
+E*TRADE is an online brokerage firm that provides a platform for investors to trade stocks, options, futures, and bonds. The E*TRADE Developer Platform offers REST APIs for account management, real-time quotes, option chains, and order placement, secured by OAuth 1.0a. The APIs are available to E*TRADE customers who register through the developer portal and provide both a sandbox and production environment.
 
 **URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/etrade/refs/heads/main/apis.yml)
 
 ## Scope
 
-- **Type:** Index 
-- **Position:** Consumer 
-- **Access:** 3rd-Party 
+- **Type:** Index
+- **Position:** Consumer
+- **Access:** 3rd-Party
 
-## Tags:
+## Tags
 
- - Financial, Stocks, Options, Futures, Bonds
+- Bonds, Brokerage, Financial, Futures, Options, Stocks, Trading
 
 ## Timestamps
 
-- **Created:** 2025-02-17 
-- **Modified:** 2025-03-02 
+- **Created:** 2025-02-17
+- **Modified:** 2026-04-28
 
 ## APIs
 
-### Etrade API
-Etrade API is a set of tools and protocols that allow developers to integrate Etrade's trading platform into their own applications. This API gives users access to real-time market data, place trades, manage their accounts, and more. By utilizing Etrade API, developers can create custom trading tools and algorithms, automate trading strategies, and provide a seamless trading experience for their users. The API also offers secure authentication methods and data encryption to ensure the confidentiality and integrity of sensitive financial information. With Etrade API, developers can take advantage of Etrade's advanced trading capabilities and expand the functionality of their applications to meet the needs of traders and investors.
+### E*TRADE API
 
-**Human URL:** [ https://developer.etrade.com/home]( https://developer.etrade.com/home)
+The E*TRADE REST API gives developers programmatic access to account lists, balances, portfolios, transactions, market quotes, option chains, and order placement. Authentication uses OAuth 1.0a with separate sandbox and production hosts.
 
+**Human URL:** [https://developer.etrade.com/home](https://developer.etrade.com/home)
 
-#### Tags:
+**Base URL:** `https://api.etrade.com/v1`
 
- - Financial, Stocks, Options, Futures, Bonds
+#### Tags
+
+- Bonds, Brokerage, Financial, Futures, Options, Stocks, Trading
 
 #### Properties
 
-- [Documentation]( https://developer.etrade.com/home)
+- [Documentation](https://developer.etrade.com/home)
+- [Getting Started](https://developer.etrade.com/getting-started)
+- [SignUp](https://developer.etrade.com/home)
+- [OpenAPI](openapi/etrade-openapi.yml)
+
+## Common Properties
+
+- [Portal](https://us.etrade.com/)
+- [Documentation](https://developer.etrade.com/home)
+- [SignUp](https://developer.etrade.com/home)
+- [Terms of Service](https://us.etrade.com/etx/sd/legaldoc/customer-agreements)
+- [Privacy Policy](https://us.etrade.com/l/f/privacy/security-center)
 
 ## Maintainers
 
 **FN:** Kin Lane
 
-**Email:** info@apievangelist.com
-
+**Email:** kin@apievangelist.com
