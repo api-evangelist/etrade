@@ -1,0 +1,418 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: E*TRADE API
+  description: The E*TRADE Developer Platform exposes REST APIs for account management, quote retrieval, options chains, order
+    placement, and market data. Access is granted to E*TRADE customers via OAuth 1.0a after registering as a developer at
+    https://developer.etrade.com/home.
+  tags:
+  - Etrade
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: etrade
+    baseUri: https://api.etrade.com/v1
+    description: E*TRADE API HTTP API.
+    resources:
+    - name: accounts-list
+      path: /accounts/list
+      operations:
+      - name: listaccounts
+        method: GET
+        description: List accounts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: accounts-accountidkey-balance
+      path: /accounts/{accountIdKey}/balance
+      operations:
+      - name: getaccountbalance
+        method: GET
+        description: Get account balance
+        inputParameters:
+        - name: accountIdKey
+          in: path
+          type: string
+          required: true
+        - name: instType
+          in: query
+          type: string
+          required: true
+        - name: realTimeNAV
+          in: query
+          type: boolean
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: accounts-accountidkey-portfolio
+      path: /accounts/{accountIdKey}/portfolio
+      operations:
+      - name: viewportfolio
+        method: GET
+        description: View portfolio
+        inputParameters:
+        - name: accountIdKey
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: accounts-accountidkey-transactions
+      path: /accounts/{accountIdKey}/transactions
+      operations:
+      - name: listtransactions
+        method: GET
+        description: List transactions
+        inputParameters:
+        - name: accountIdKey
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: market-quote-symbols
+      path: /market/quote/{symbols}
+      operations:
+      - name: getquotes
+        method: GET
+        description: Get quotes
+        inputParameters:
+        - name: symbols
+          in: path
+          type: string
+          required: true
+        - name: detailFlag
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: market-optionchains
+      path: /market/optionchains
+      operations:
+      - name: getoptionchains
+        method: GET
+        description: Look up option chains
+        inputParameters:
+        - name: symbol
+          in: query
+          type: string
+          required: true
+        - name: expiryYear
+          in: query
+          type: integer
+        - name: expiryMonth
+          in: query
+          type: integer
+        - name: expiryDay
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: accounts-accountidkey-orders-preview
+      path: /accounts/{accountIdKey}/orders/preview
+      operations:
+      - name: previeworder
+        method: POST
+        description: Preview order
+        inputParameters:
+        - name: accountIdKey
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: accounts-accountidkey-orders-place
+      path: /accounts/{accountIdKey}/orders/place
+      operations:
+      - name: placeorder
+        method: POST
+        description: Place order
+        inputParameters:
+        - name: accountIdKey
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: etrade-rest
+    description: REST adapter for E*TRADE API.
+    resources:
+    - path: /accounts/list
+      name: listaccounts
+      operations:
+      - method: GET
+        name: listaccounts
+        description: List accounts
+        call: etrade.listaccounts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /accounts/{accountIdKey}/balance
+      name: getaccountbalance
+      operations:
+      - method: GET
+        name: getaccountbalance
+        description: Get account balance
+        call: etrade.getaccountbalance
+        with:
+          accountIdKey: rest.accountIdKey
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /accounts/{accountIdKey}/portfolio
+      name: viewportfolio
+      operations:
+      - method: GET
+        name: viewportfolio
+        description: View portfolio
+        call: etrade.viewportfolio
+        with:
+          accountIdKey: rest.accountIdKey
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /accounts/{accountIdKey}/transactions
+      name: listtransactions
+      operations:
+      - method: GET
+        name: listtransactions
+        description: List transactions
+        call: etrade.listtransactions
+        with:
+          accountIdKey: rest.accountIdKey
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /market/quote/{symbols}
+      name: getquotes
+      operations:
+      - method: GET
+        name: getquotes
+        description: Get quotes
+        call: etrade.getquotes
+        with:
+          symbols: rest.symbols
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /market/optionchains
+      name: getoptionchains
+      operations:
+      - method: GET
+        name: getoptionchains
+        description: Look up option chains
+        call: etrade.getoptionchains
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /accounts/{accountIdKey}/orders/preview
+      name: previeworder
+      operations:
+      - method: POST
+        name: previeworder
+        description: Preview order
+        call: etrade.previeworder
+        with:
+          accountIdKey: rest.accountIdKey
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /accounts/{accountIdKey}/orders/place
+      name: placeorder
+      operations:
+      - method: POST
+        name: placeorder
+        description: Place order
+        call: etrade.placeorder
+        with:
+          accountIdKey: rest.accountIdKey
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: etrade-mcp
+    transport: http
+    description: MCP adapter for E*TRADE API for AI agent use.
+    tools:
+    - name: listaccounts
+      description: List accounts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: etrade.listaccounts
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getaccountbalance
+      description: Get account balance
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: etrade.getaccountbalance
+      with:
+        accountIdKey: tools.accountIdKey
+        instType: tools.instType
+        realTimeNAV: tools.realTimeNAV
+      inputParameters:
+      - name: accountIdKey
+        type: string
+        description: accountIdKey
+        required: true
+      - name: instType
+        type: string
+        description: instType
+        required: true
+      - name: realTimeNAV
+        type: boolean
+        description: realTimeNAV
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: viewportfolio
+      description: View portfolio
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: etrade.viewportfolio
+      with:
+        accountIdKey: tools.accountIdKey
+      inputParameters:
+      - name: accountIdKey
+        type: string
+        description: accountIdKey
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listtransactions
+      description: List transactions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: etrade.listtransactions
+      with:
+        accountIdKey: tools.accountIdKey
+      inputParameters:
+      - name: accountIdKey
+        type: string
+        description: accountIdKey
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getquotes
+      description: Get quotes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: etrade.getquotes
+      with:
+        symbols: tools.symbols
+        detailFlag: tools.detailFlag
+      inputParameters:
+      - name: symbols
+        type: string
+        description: symbols
+        required: true
+      - name: detailFlag
+        type: string
+        description: detailFlag
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getoptionchains
+      description: Look up option chains
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: etrade.getoptionchains
+      with:
+        symbol: tools.symbol
+        expiryYear: tools.expiryYear
+        expiryMonth: tools.expiryMonth
+        expiryDay: tools.expiryDay
+      inputParameters:
+      - name: symbol
+        type: string
+        description: symbol
+        required: true
+      - name: expiryYear
+        type: integer
+        description: expiryYear
+      - name: expiryMonth
+        type: integer
+        description: expiryMonth
+      - name: expiryDay
+        type: integer
+        description: expiryDay
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: previeworder
+      description: Preview order
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: etrade.previeworder
+      with:
+        accountIdKey: tools.accountIdKey
+      inputParameters:
+      - name: accountIdKey
+        type: string
+        description: accountIdKey
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: placeorder
+      description: Place order
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: etrade.placeorder
+      with:
+        accountIdKey: tools.accountIdKey
+      inputParameters:
+      - name: accountIdKey
+        type: string
+        description: accountIdKey
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
