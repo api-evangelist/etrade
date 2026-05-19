@@ -1,0 +1,201 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: E*TRADE API — Accounts
+  description: 'E*TRADE API — Accounts. 4 operations. Lead operation: List accounts. Self-contained Naftiko capability covering
+    one Etrade business surface.'
+  tags:
+  - Etrade
+  - Accounts
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ETRADE_API_KEY: ETRADE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: etrade-accounts
+    baseUri: https://api.etrade.com/v1
+    description: E*TRADE API — Accounts business capability. Self-contained, no shared references.
+    resources:
+    - name: accounts-list
+      path: /accounts/list
+      operations:
+      - name: listaccounts
+        method: GET
+        description: List accounts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: accounts-accountIdKey-balance
+      path: /accounts/{accountIdKey}/balance
+      operations:
+      - name: getaccountbalance
+        method: GET
+        description: Get account balance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountIdKey
+          in: path
+          type: string
+          required: true
+        - name: instType
+          in: query
+          type: string
+          required: true
+        - name: realTimeNAV
+          in: query
+          type: boolean
+    - name: accounts-accountIdKey-portfolio
+      path: /accounts/{accountIdKey}/portfolio
+      operations:
+      - name: viewportfolio
+        method: GET
+        description: View portfolio
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountIdKey
+          in: path
+          type: string
+          required: true
+    - name: accounts-accountIdKey-transactions
+      path: /accounts/{accountIdKey}/transactions
+      operations:
+      - name: listtransactions
+        method: GET
+        description: List transactions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountIdKey
+          in: path
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: etrade-accounts-rest
+    port: 8080
+    description: REST adapter for E*TRADE API — Accounts. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/accounts/list
+      name: accounts-list
+      description: REST surface for accounts-list.
+      operations:
+      - method: GET
+        name: listaccounts
+        description: List accounts
+        call: etrade-accounts.listaccounts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{accountidkey}/balance
+      name: accounts-accountidkey-balance
+      description: REST surface for accounts-accountIdKey-balance.
+      operations:
+      - method: GET
+        name: getaccountbalance
+        description: Get account balance
+        call: etrade-accounts.getaccountbalance
+        with:
+          accountIdKey: rest.accountIdKey
+          instType: rest.instType
+          realTimeNAV: rest.realTimeNAV
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{accountidkey}/portfolio
+      name: accounts-accountidkey-portfolio
+      description: REST surface for accounts-accountIdKey-portfolio.
+      operations:
+      - method: GET
+        name: viewportfolio
+        description: View portfolio
+        call: etrade-accounts.viewportfolio
+        with:
+          accountIdKey: rest.accountIdKey
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{accountidkey}/transactions
+      name: accounts-accountidkey-transactions
+      description: REST surface for accounts-accountIdKey-transactions.
+      operations:
+      - method: GET
+        name: listtransactions
+        description: List transactions
+        call: etrade-accounts.listtransactions
+        with:
+          accountIdKey: rest.accountIdKey
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: etrade-accounts-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for E*TRADE API — Accounts. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-accounts
+      description: List accounts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: etrade-accounts.listaccounts
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-account-balance
+      description: Get account balance
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: etrade-accounts.getaccountbalance
+      with:
+        accountIdKey: tools.accountIdKey
+        instType: tools.instType
+        realTimeNAV: tools.realTimeNAV
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: view-portfolio
+      description: View portfolio
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: etrade-accounts.viewportfolio
+      with:
+        accountIdKey: tools.accountIdKey
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-transactions
+      description: List transactions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: etrade-accounts.listtransactions
+      with:
+        accountIdKey: tools.accountIdKey
+      outputParameters:
+      - type: object
+        mapping: $.
