@@ -1,0 +1,201 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "E*TRADE API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.etrade.com/v1/accounts/list"
+          },
+          "docs": "Returns the list of E*TRADE accounts for the authenticated customer."
+        },
+        {
+          "info": {
+            "name": "Get account balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.etrade.com/v1/accounts/:accountIdKey/balance",
+            "params": [
+              {
+                "name": "accountIdKey",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "realTimeNAV",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get account balance"
+        },
+        {
+          "info": {
+            "name": "View portfolio",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.etrade.com/v1/accounts/:accountIdKey/portfolio",
+            "params": [
+              {
+                "name": "accountIdKey",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "View portfolio"
+        },
+        {
+          "info": {
+            "name": "List transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.etrade.com/v1/accounts/:accountIdKey/transactions",
+            "params": [
+              {
+                "name": "accountIdKey",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List transactions"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Market",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get quotes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.etrade.com/v1/market/quote/:symbols",
+            "params": [
+              {
+                "name": "symbols",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "detailFlag",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns market quotes for one or more symbols (comma separated)."
+        },
+        {
+          "info": {
+            "name": "Look up option chains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.etrade.com/v1/market/optionchains",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "expiryYear",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "expiryMonth",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "expiryDay",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Look up option chains"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Order",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Preview order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.etrade.com/v1/accounts/:accountIdKey/orders/preview",
+            "params": [
+              {
+                "name": "accountIdKey",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Preview order"
+        },
+        {
+          "info": {
+            "name": "Place order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.etrade.com/v1/accounts/:accountIdKey/orders/place",
+            "params": [
+              {
+                "name": "accountIdKey",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Place order"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
