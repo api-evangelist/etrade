@@ -6,7 +6,7 @@ description: >-
   order placement, secured by OAuth 1.0a. The APIs are available to E*TRADE customers who register through the developer
   portal and provide both a sandbox and production environment.
 url: https://raw.githubusercontent.com/api-evangelist/etrade/refs/heads/main/apis.yml
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 type: Index
 position: Consumer
 access: 3rd-Party
