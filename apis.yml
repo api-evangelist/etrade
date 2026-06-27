@@ -44,7 +44,7 @@ apis:
       - url: https://developer.etrade.com/getting-started
         type: GettingStarted
       - url: https://developer.etrade.com/home
-        type: SignUp
+        type: Signup
       - url: openapi/etrade-openapi.yml
         type: OpenAPI
 common:
@@ -55,7 +55,7 @@ common:
   - url: https://developer.etrade.com/home
     type: Documentation
   - url: https://developer.etrade.com/home
-    type: SignUp
+    type: Signup
   - url: https://us.etrade.com/etx/sd/legaldoc/customer-agreements
     type: TermsOfService
   - url: https://us.etrade.com/l/f/privacy/security-center
