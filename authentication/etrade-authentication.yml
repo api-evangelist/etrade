@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/etrade-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: oauth1
+  type: http
+  scheme: OAuth
+  description: E*TRADE uses OAuth 1.0a. Obtain a request token, redirect the customer for authorization,
+    exchange for an access token, then sign each request with HMAC-SHA1.
+  sources:
+  - openapi/etrade-openapi.yml

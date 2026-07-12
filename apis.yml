@@ -48,6 +48,10 @@ apis:
       - url: openapi/etrade-openapi.yml
         type: OpenAPI
 common:
+  - type: DomainSecurity
+    url: security/etrade-domain-security.yml
+  - type: Authentication
+    url: authentication/etrade-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/etrade
   - url: https://us.etrade.com/
