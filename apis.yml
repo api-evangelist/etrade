@@ -48,6 +48,8 @@ apis:
       - url: openapi/etrade-openapi.yml
         type: OpenAPI
 common:
+  - type: AgenticAccess
+    url: agentic-access/etrade-agentic-access.yml
   - type: DomainSecurity
     url: security/etrade-domain-security.yml
   - type: Authentication
