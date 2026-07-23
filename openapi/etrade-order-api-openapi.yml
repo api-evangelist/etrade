@@ -1,0 +1,56 @@
+openapi: 3.0.3
+info:
+  title: E*TRADE Accounts Order API
+  description: The E*TRADE Developer Platform exposes REST APIs for account management, quote retrieval, options chains, order placement, and market data. Access is granted to E*TRADE customers via OAuth 1.0a after registering as a developer at https://developer.etrade.com/home.
+  version: '1.0'
+  contact:
+    name: E*TRADE Developer Platform
+    url: https://developer.etrade.com/home
+  termsOfService: https://us.etrade.com/etx/hw/v2/api
+servers:
+- url: https://api.etrade.com/v1
+  description: Production
+- url: https://apisb.etrade.com/v1
+  description: Sandbox
+security:
+- oauth1: []
+tags:
+- name: Order
+  description: Preview, place, change, and cancel equity and option orders
+paths:
+  /accounts/{accountIdKey}/orders/preview:
+    post:
+      summary: Preview order
+      operationId: previewOrder
+      tags:
+      - Order
+      parameters:
+      - name: accountIdKey
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Order preview
+  /accounts/{accountIdKey}/orders/place:
+    post:
+      summary: Place order
+      operationId: placeOrder
+      tags:
+      - Order
+      parameters:
+      - name: accountIdKey
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Order confirmation
+components:
+  securitySchemes:
+    oauth1:
+      type: http
+      scheme: OAuth
+      description: E*TRADE uses OAuth 1.0a. Obtain a request token, redirect the customer for authorization, exchange for an access token, then sign each request with HMAC-SHA1.

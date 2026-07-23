@@ -1,0 +1,82 @@
+openapi: 3.0.3
+info:
+  title: E*TRADE Accounts Market API
+  description: The E*TRADE Developer Platform exposes REST APIs for account management, quote retrieval, options chains, order placement, and market data. Access is granted to E*TRADE customers via OAuth 1.0a after registering as a developer at https://developer.etrade.com/home.
+  version: '1.0'
+  contact:
+    name: E*TRADE Developer Platform
+    url: https://developer.etrade.com/home
+  termsOfService: https://us.etrade.com/etx/hw/v2/api
+servers:
+- url: https://api.etrade.com/v1
+  description: Production
+- url: https://apisb.etrade.com/v1
+  description: Sandbox
+security:
+- oauth1: []
+tags:
+- name: Market
+  description: Quotes, option chains, option expirations, and product lookup
+paths:
+  /market/quote/{symbols}:
+    get:
+      summary: Get quotes
+      description: Returns market quotes for one or more symbols (comma separated).
+      operationId: getQuotes
+      tags:
+      - Market
+      parameters:
+      - name: symbols
+        in: path
+        required: true
+        schema:
+          type: string
+          example: GOOG,AAPL
+      - name: detailFlag
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - ALL
+          - FUNDAMENTAL
+          - INTRADAY
+          - OPTIONS
+          - WEEK_52
+          - MF_DETAIL
+      responses:
+        '200':
+          description: Quote response
+  /market/optionchains:
+    get:
+      summary: Look up option chains
+      operationId: getOptionChains
+      tags:
+      - Market
+      parameters:
+      - name: symbol
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: expiryYear
+        in: query
+        schema:
+          type: integer
+      - name: expiryMonth
+        in: query
+        schema:
+          type: integer
+      - name: expiryDay
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Option chain response
+components:
+  securitySchemes:
+    oauth1:
+      type: http
+      scheme: OAuth
+      description: E*TRADE uses OAuth 1.0a. Obtain a request token, redirect the customer for authorization, exchange for an access token, then sign each request with HMAC-SHA1.
