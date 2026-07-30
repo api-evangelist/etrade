@@ -6,7 +6,20 @@ description: >-
   order placement, secured by OAuth 1.0a. The APIs are available to E*TRADE customers who register through the developer
   portal and provide both a sandbox and production environment.
 url: https://raw.githubusercontent.com/api-evangelist/etrade/refs/heads/main/apis.yml
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/etrade.png
 type: Index
 position: Consumer
 access: 3rd-Party
@@ -22,31 +35,54 @@ tags:
   - Stocks
   - Trading
 apis:
-  - aid: etrade:etrade
-    name: E*TRADE API
-    description: >-
-      The E*TRADE REST API gives developers programmatic access to account lists, balances, portfolios, transactions,
-      market quotes, option chains, and order placement. Authentication uses OAuth 1.0a with separate sandbox and
-      production hosts.
-    humanURL: https://developer.etrade.com/home
-    baseURL: https://api.etrade.com/v1
-    tags:
-      - Bonds
-      - Brokerage
-      - Financial
-      - Futures
-      - Options
-      - Stocks
-      - Trading
-    properties:
-      - url: https://developer.etrade.com/home
-        type: Documentation
-      - url: https://developer.etrade.com/getting-started
-        type: GettingStarted
-      - url: https://developer.etrade.com/home
-        type: Signup
-      - url: openapi/etrade-openapi.yml
-        type: OpenAPI
+- aid: etrade:etrade-accounts-api
+  name: Etrade Accounts API
+  description: Customer account list, balances, portfolio, and transactions
+  humanURL: https://developer.etrade.com/home
+  baseURL: https://api.etrade.com/v1
+  tags:
+  - Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/etrade-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://developer.etrade.com/home
+  - type: GettingStarted
+    url: https://developer.etrade.com/getting-started
+  - type: Signup
+    url: https://developer.etrade.com/home
+- aid: etrade:etrade-market-api
+  name: Etrade Market API
+  description: Quotes, option chains, option expirations, and product lookup
+  humanURL: https://developer.etrade.com/home
+  baseURL: https://api.etrade.com/v1
+  tags:
+  - Market
+  properties:
+  - type: OpenAPI
+    url: openapi/etrade-market-api-openapi.yml
+  - type: Documentation
+    url: https://developer.etrade.com/home
+  - type: GettingStarted
+    url: https://developer.etrade.com/getting-started
+  - type: Signup
+    url: https://developer.etrade.com/home
+- aid: etrade:etrade-order-api
+  name: Etrade Order API
+  description: Preview, place, change, and cancel equity and option orders
+  humanURL: https://developer.etrade.com/home
+  baseURL: https://api.etrade.com/v1
+  tags:
+  - Order
+  properties:
+  - type: OpenAPI
+    url: openapi/etrade-order-api-openapi.yml
+  - type: Documentation
+    url: https://developer.etrade.com/home
+  - type: GettingStarted
+    url: https://developer.etrade.com/getting-started
+  - type: Signup
+    url: https://developer.etrade.com/home
 common:
   - type: AgenticAccess
     url: agentic-access/etrade-agentic-access.yml
