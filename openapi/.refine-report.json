@@ -1,0 +1,18 @@
+{
+  "provider": "etrade",
+  "sources": [
+    "etrade-accounts-api-openapi.yml",
+    "etrade-market-api-openapi.yml",
+    "etrade-order-api-openapi.yml"
+  ],
+  "outputs": [
+    "etrade-accounts-api-openapi.yml",
+    "etrade-market-api-openapi.yml",
+    "etrade-order-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
