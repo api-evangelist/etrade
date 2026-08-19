@@ -1,0 +1,223 @@
+{
+  "item": [
+    {
+      "id": "b61c1450-75b2-49a0-a806-4a5c44e1b1be",
+      "name": "Order",
+      "description": {
+        "content": "Preview, place, change, and cancel equity and option orders",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1ea602bd-55c5-4af5-b59a-ca928f921009",
+          "name": "Preview order",
+          "request": {
+            "name": "Preview order",
+            "description": {},
+            "url": {
+              "path": [
+                "accounts",
+                ":accountIdKey",
+                "orders",
+                "preview"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountIdKey",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9292f929-0cf8-4467-9066-6d7a6bcd46fa",
+              "name": "Order preview",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountIdKey",
+                    "orders",
+                    "preview"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountIdKey",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth1",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "OAuth <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "592ff61d-394c-4316-bb74-3af8d42a7a43",
+          "name": "Place order",
+          "request": {
+            "name": "Place order",
+            "description": {},
+            "url": {
+              "path": [
+                "accounts",
+                ":accountIdKey",
+                "orders",
+                "place"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountIdKey",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e4d90ea1-09a8-4f08-9a1c-d6197b862b4b",
+              "name": "Order confirmation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountIdKey",
+                    "orders",
+                    "place"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountIdKey",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth1",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "OAuth <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.etrade.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth1",
+    "oauth1": [
+      {
+        "key": "consumerSecret",
+        "value": "{{consumerSecret}}"
+      },
+      {
+        "key": "consumerKey",
+        "value": "{{consumerKey}}"
+      },
+      {
+        "key": "addParamsToHeader",
+        "value": true
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c36efb56-a0aa-42e6-9e51-e7036511f931",
+    "name": "E*TRADE Accounts Order API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The E*TRADE Developer Platform exposes REST APIs for account management, quote retrieval, options chains, order placement, and market data. Access is granted to E*TRADE customers via OAuth 1.0a after registering as a developer at https://developer.etrade.com/home.\n\nContact Support:\n Name: E*TRADE Developer Platform",
+      "type": "text/plain"
+    }
+  }
+}

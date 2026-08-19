@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "E*TRADE Accounts Market API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Market",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get quotes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.etrade.com/v1/market/quote/:symbols",
+            "params": [
+              {
+                "name": "symbols",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "detailFlag",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns market quotes for one or more symbols (comma separated)."
+        },
+        {
+          "info": {
+            "name": "Look up option chains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.etrade.com/v1/market/optionchains",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "expiryYear",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "expiryMonth",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "expiryDay",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Look up option chains"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
