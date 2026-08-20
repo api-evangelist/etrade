@@ -41,6 +41,8 @@ apis:
   humanURL: https://developer.etrade.com/home
   baseURL: https://api.etrade.com/v1
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
