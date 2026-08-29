@@ -6,6 +6,18 @@ description: >-
   order placement, secured by OAuth 1.0a. The APIs are available to E*TRADE customers who register through the developer
   portal and provide both a sandbox and production environment.
 url: https://raw.githubusercontent.com/api-evangelist/etrade/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
