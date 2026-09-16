@@ -1,10 +1,10 @@
 aid: etrade
 name: Etrade
-description: >-
-  E*TRADE is an online brokerage firm that provides a platform for investors to trade stocks, options, futures, and
-  bonds. The E*TRADE Developer Platform offers REST APIs for account management, real-time quotes, option chains, and
-  order placement, secured by OAuth 1.0a. The APIs are available to E*TRADE customers who register through the developer
-  portal and provide both a sandbox and production environment.
+description: E*TRADE is an online brokerage firm that provides a platform for investors to trade stocks,
+  options, futures, and bonds. The E*TRADE Developer Platform offers REST APIs for account management,
+  real-time quotes, option chains, and order placement, secured by OAuth 1.0a. The APIs are available
+  to E*TRADE customers who register through the developer portal and provide both a sandbox and production
+  environment.
 url: https://raw.githubusercontent.com/api-evangelist/etrade/refs/heads/main/apis.yml
 deliveryModel:
   model: saas
@@ -37,16 +37,16 @@ type: Index
 position: Consuming
 access: 3rd-Party
 created: '2025-02-17'
-modified: '2026-05-19'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 tags:
-  - Bonds
-  - Brokerage
-  - Financial
-  - Futures
-  - Options
-  - Stocks
-  - Trading
+- Bonds
+- Brokerage
+- Financial
+- Futures
+- Options
+- Stocks
+- Trading
 apis:
 - aid: etrade:etrade-accounts-api
   name: Etrade Accounts API
@@ -99,24 +99,26 @@ apis:
   - type: Signup
     url: https://developer.etrade.com/home
 common:
-  - type: AgenticAccess
-    url: agentic-access/etrade-agentic-access.yml
-  - type: DomainSecurity
-    url: security/etrade-domain-security.yml
-  - type: Authentication
-    url: authentication/etrade-authentication.yml
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/etrade
-  - url: https://us.etrade.com/
-    type: Portal
-  - url: https://developer.etrade.com/home
-    type: Documentation
-  - url: https://developer.etrade.com/home
-    type: Signup
-  - url: https://us.etrade.com/etx/sd/legaldoc/customer-agreements
-    type: TermsOfService
-  - url: https://us.etrade.com/l/f/privacy/security-center
-    type: PrivacyPolicy
+- type: Website
+  url: https://etrade.com
+- type: AgenticAccess
+  url: agentic-access/etrade-agentic-access.yml
+- type: DomainSecurity
+  url: security/etrade-domain-security.yml
+- type: Authentication
+  url: authentication/etrade-authentication.yml
+- type: LinkedIn
+  url: https://www.linkedin.com/company/etrade
+- url: https://us.etrade.com/
+  type: Portal
+- url: https://developer.etrade.com/home
+  type: Documentation
+- url: https://developer.etrade.com/home
+  type: Signup
+- url: https://us.etrade.com/etx/sd/legaldoc/customer-agreements
+  type: TermsOfService
+- url: https://us.etrade.com/l/f/privacy/security-center
+  type: PrivacyPolicy
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
