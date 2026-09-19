@@ -72,6 +72,8 @@ apis:
   humanURL: https://developer.etrade.com/home
   baseURL: https://api.etrade.com/v1
   tags:
+  - Markets
+  tags_raw:
   - Market
   properties:
   - type: OpenAPI
