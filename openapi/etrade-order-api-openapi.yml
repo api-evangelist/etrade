@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: E*TRADE Accounts Order API
+  title: E*TRADE Order API
   description: The E*TRADE Developer Platform exposes REST APIs for account management, quote retrieval, options chains, order placement, and market data. Access is granted to E*TRADE customers via OAuth 1.0a after registering as a developer at https://developer.etrade.com/home.
   version: '1.0'
   contact:

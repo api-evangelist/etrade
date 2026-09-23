@@ -1,7 +1,9 @@
 ---
 title: Artificial Intelligence | Learn and Invest | E*TRADE
 url: https://us.etrade.com/knowledge/thematic-investing/artificial-intelligence
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"E*Trade Financial" press release artificial intelligence'
 position: 1
 source: serpapi-google

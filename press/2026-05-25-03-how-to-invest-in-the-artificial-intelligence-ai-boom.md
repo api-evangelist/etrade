@@ -1,7 +1,9 @@
 ---
 title: How to Invest in the Artificial Intelligence (AI) Boom
 url: https://us.etrade.com/knowledge/library/perspectives/market-happenings/megatrends-how-to-invest-in-the-artificial-intelligence
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"E*Trade Financial" press release artificial intelligence'
 position: 3
 source: serpapi-google
