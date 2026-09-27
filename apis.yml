@@ -42,6 +42,14 @@ specificationVersion: '0.23'
 tags:
 - Bonds
 - Brokerage
+- Finance
+- Futures
+- Options
+- Stocks
+- Trading
+tags_raw:
+- Bonds
+- Brokerage
 - Financial
 - Futures
 - Options
