@@ -47,6 +47,7 @@ tags:
 - Options
 - Stocks
 - Trading
+- Financial Services
 tags_raw:
 - Bonds
 - Brokerage
@@ -55,6 +56,7 @@ tags_raw:
 - Options
 - Stocks
 - Trading
+- Financial Services
 apis:
 - aid: etrade:etrade-accounts-api
   name: Etrade Accounts API
